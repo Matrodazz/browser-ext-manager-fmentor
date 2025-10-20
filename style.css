@@ -114,6 +114,12 @@ main {
 /* =======================================
    Extension card                         
 */
+.extension__card__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex-direction: column;
+}
 
 .extension__card {
   padding: 15px;
