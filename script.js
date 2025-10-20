@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-
   // cria e adiciona os cards
   function renderCards(data) {
     list.innerHTML = '';
@@ -40,6 +38,42 @@ document.addEventListener('DOMContentLoaded', () => {
           </label>
         </div>
       `;
+
+      // botão remover
+      card.querySelector('.remove__button').addEventListener('click', () => {
+        const realIndex = allData.findIndex(d => d.name === item.name);
+        if (realIndex > -1) {
+          allData.splice(realIndex, 1);
+          localStorage.setItem('extensionsData', JSON.stringify(allData));
+        }
+        // reaplica filtro atual
+        applyCurrentFilter();
+      });
+
+
+      // slider ativo/inativo
+      const checkbox = card.querySelector('input[type="checkbox"]');
+      checkbox.addEventListener('change', () => {
+        const realIndex = allData.findIndex(d => d.name === item.name);
+        if (realIndex > -1) {
+          allData[realIndex].isActive = checkbox.checked;
+          localStorage.setItem('extensionsData', JSON.stringify(allData));
+        }
+
+        // verifica filtro atual
+        const activeFilterBtn = document.querySelector('.filter__button--selected');
+        const currentFilter = activeFilterBtn?.dataset.filter || 'all';
+
+        // se o card não pertence mais ao filtro atual, remove apenas ele
+        const shouldBeVisible =
+          currentFilter === 'all' ||
+          (currentFilter === 'active' && checkbox.checked) ||
+          (currentFilter === 'inactive' && !checkbox.checked);
+
+        if (!shouldBeVisible) {
+          card.remove();
+        }
+      });
 
     list.appendChild(card);
     });
@@ -87,6 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
       renderCards(allData);
     })
     .catch(error => console.error('Erro ao carregar data.json:', error));
-
 
 });
