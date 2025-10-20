@@ -296,3 +296,21 @@ footer a {
   color: var(--color-text);
   font-weight: 600;
 }
+
+
+@media (max-width: 768px) {
+  
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .extension__card__list {
+    grid-template-columns: none;
+  }
+
+  .attribution {
+    margin: 30px 0px;
+    text-align: center;
+  }
+}
