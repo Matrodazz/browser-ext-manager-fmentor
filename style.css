@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/static/NotoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --color-background: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --color-background-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+  --color-secondary-background: hsl(200, 60%, 99%);
+  --color-secondary-background-dark: hsl(226, 25%, 17%);
+
+  --color-button-background: hsl(0, 0%, 93%);
+  --color-button-background-dark: hsl(225, 23%, 24%);
+  --color-button-background-hover: hsl(0, 0%, 78%);
+  --color-button-background-hover-dark: hsl(226, 11%, 37%);
+
+  --color-text: hsl(227, 75%, 14%);
+  --color-selected-button-text: hsl(200, 60%, 99%);
+  --color-selected-button-text-dark: hsl(227, 75%, 14%);
+
+  --color-primary: hsl(3, 77%, 44%);
+  --color-primary-dark: hsl(3, 86%, 64%);
+
+  --container-border-radius: 20px;
+  --container-border: 1.5px solid hsl(217, 61%, 90%);
+  
+}
+
+[data-theme="dark"] {
+  --color-background: var(--color-background-dark);
+  --color-secondary-background: var(--color-secondary-background-dark);
+
+  --color-button-background: var(--color-button-background-dark);
+  --color-button-background-hover: var(--color-button-background-hover-dark);
+
+  --color-primary: var(--color-primary-dark);
+
+  --color-text: hsl(200, 60%, 99%);
+  --color-selected-button-text: var(--color-selected-button-text-dark);
+
+  --container-border: var(--container-border-dark);
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--color-background); 
+  color: var(--color-text);
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 1rem;
+  transition: background 0.3s, color 0.3s; 
+}
+
+main {
+  min-height: 1000px;
+}
+
+.container__logo {
+  background-color: var(--color-secondary-background);
+  border-radius: var(--container-border-radius);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 35px;
+  border: var(--container-border);
+}
+
+/* =======================================
+   Theme button                         
+*/
+.theme__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;           
+  height: 50px;
+  background-color: var(--color-button-background);
+  border-radius: var(--container-border-radius); 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.theme__button:hover {
+  background-color: var(--color-button-background-hover);
+}
+
+/* =======================================
+   Filter button                         
+*/
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+#filters {
+  display: flex;
+  gap: 10px;
+}
+
+.filter__button, .filter__button--selected {
+  font-family: 'Noto Sans', sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--color-text);
+  background-color: var(--color-secondary-background);
+  border-radius: var(--container-border-radius);
+  border: var(--container-border);
+  transition: background-color 0.3s, transform 0.2s;
+  padding: 10px 20px;
+}
+
+.filter__button:hover {
+  background-color: var(--color-button-background-hover);
+}
+
+.filter__button--selected {
+  background-color: var(--color-primary);
+  color: var(--color-selected-button-text);
+}
+
+
+
+/* =======================================
+   Footer                       
+*/
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+footer a {
+  color: var(--color-text);
+  font-weight: 600;
+}
