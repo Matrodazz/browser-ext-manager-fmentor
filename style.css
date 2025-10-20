@@ -23,7 +23,14 @@
   --color-button-background-hover: hsl(0, 0%, 78%);
   --color-button-background-hover-dark: hsl(226, 11%, 37%);
 
+  --color-slider-background: hsl(0, 0%, 78%);
+  --color-slider-background-dark: hsl(226, 11%, 37%);
+  --color-slider-hover-background:hsl(3, 86%, 64%);
+  --color-slider-hover-background-dark:hsl(3, 77%, 44%);
+
   --color-text: hsl(227, 75%, 14%);
+  --color-description-text: hsl(226, 11%, 37%);
+  --color-description-text-dark: hsl(0, 0%, 78%);
   --color-selected-button-text: hsl(200, 60%, 99%);
   --color-selected-button-text-dark: hsl(227, 75%, 14%);
 
@@ -32,6 +39,7 @@
 
   --container-border-radius: 20px;
   --container-border: 1.5px solid hsl(217, 61%, 90%);
+  --container-border-dark: 1.5px solid hsl(225, 23%, 24%);
   
 }
 
@@ -44,7 +52,11 @@
 
   --color-primary: var(--color-primary-dark);
 
+  --color-slider-background: var(--color-slider-background-dark);
+  --color-slider-hover-background: var(--color-slider-hover-background-dark);
+
   --color-text: hsl(200, 60%, 99%);
+  --color-description-text: var(--color-description-text-dark);
   --color-selected-button-text: var(--color-selected-button-text-dark);
 
   --container-border: var(--container-border-dark);
@@ -96,6 +108,118 @@ main {
 
 .theme__button:hover {
   background-color: var(--color-button-background-hover);
+}
+
+
+/* =======================================
+   Extension card                         
+*/
+
+.extension__card {
+  padding: 15px;
+  background-color: var(--color-secondary-background);
+  border-radius: var(--container-border-radius);
+  border: var(--container-border);
+}
+
+.extension__card__top {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  
+}
+
+.extension__card__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.extension__description {
+  font-size: 14px;
+  color: var(--color-description-text);
+}
+
+.extension__card__buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* =======================================
+   Remove button                         
+*/
+.remove__button {
+  font-family: 'Noto Sans', sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text);
+  background-color: var(--color-secondary-background);
+  border-radius: var(--container-border-radius);
+  border: var(--container-border);
+  transition: background-color 0.3s, transform 0.2s;
+  padding: 8px 18px;
+}
+
+.remove__button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-selected-button-text);
+}
+
+/* =======================================
+   Slider button                         
+*/
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  width: 40px;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+  
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--container-border-radius);
+  background-color: var(--color-slider-background);
+  -webkit-transition: 0.4s;
+  transition: background-color 0.4s;
+}
+
+.slider:hover {
+  background-color: var(--color-slider-hover-background);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: hsl(200, 60%, 99%);
+  border-radius: var(--container-border-radius);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
 }
 
 /* =======================================
