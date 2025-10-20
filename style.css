@@ -106,6 +106,10 @@ main {
   transition: background-color 0.3s, transform 0.2s;
 }
 
+.theme__button:focus {
+  outline: 2px solid var(--color-primary)
+}
+
 .theme__button:hover {
   background-color: var(--color-button-background-hover);
 }
@@ -166,6 +170,10 @@ main {
   padding: 8px 18px;
 }
 
+.remove__button:focus {
+  outline: 2px solid var(--color-primary)
+}
+
 .remove__button:hover {
   background-color: var(--color-primary);
   color: var(--color-selected-button-text);
@@ -199,6 +207,11 @@ main {
   background-color: var(--color-slider-background);
   -webkit-transition: 0.4s;
   transition: background-color 0.4s;
+}
+
+.switch input:focus + .slider {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .slider:hover {
@@ -254,6 +267,10 @@ input:checked + .slider {
   border: var(--container-border);
   transition: background-color 0.3s, transform 0.2s;
   padding: 10px 20px;
+}
+
+.filter__button:focus {
+  outline: 2px solid var(--color-primary)
 }
 
 .filter__button:hover {
