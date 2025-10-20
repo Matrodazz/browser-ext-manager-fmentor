@@ -45,6 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // aplica o filtro que estiver selecionado
+  function applyCurrentFilter() {
+    const activeFilterBtn = document.querySelector('.filter__button--selected');
+    const currentFilter = activeFilterBtn?.dataset.filter || 'all';
+    let newData = [];
+    switch (currentFilter) {
+      case 'active':
+        newData = allData.filter(d => d.isActive);
+        break;
+      case 'inactive':
+        newData = allData.filter(d => !d.isActive);
+        break;
+      default:
+        newData = allData;
+    }
+    renderCards(newData);
+  }
+
+  // eventos dos botões de filtro
+  if (filters) {
+    filters.addEventListener('click', (event) => {
+      const btn = event.target.closest('.filter__button');
+      if (!btn) return;
+
+      // remove seleção de todos
+      document.querySelectorAll('.filter__button').forEach(b => b.classList.remove('filter__button--selected'));
+      btn.classList.add('filter__button--selected');
+
+      // chama função que aplica filtro atual
+      applyCurrentFilter();
+    });
+  }
+
   // carrega JSON com os dados
   fetch('./data.json')
     .then(response => response.json())
